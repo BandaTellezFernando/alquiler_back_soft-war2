@@ -1,4 +1,3 @@
-// src/modules/teamsys/services/auth.service.ts
 import axios from "axios";
 import * as jwt from 'jsonwebtoken';
 import { UsuarioDocument, CrearUsuarioDto } from "../types";

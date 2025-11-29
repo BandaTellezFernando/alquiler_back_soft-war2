@@ -7,14 +7,16 @@
     "declaration": false,
     "removeComments": true,
 
-    /* === CAMBIO 1: Configuración para Next.js/Bundlers === */
-    "target": "ES2017",
-    "module": "esnext",            // Antes: Node16
-    "moduleResolution": "bundler", // Antes: node16 (Esto arregla el error de import)
+    /* === Módulos y compatibilidad === */
+    "target": "ES2022",
     
-    /* === CAMBIO 2: Librerías necesarias === */
-    /* 'dom' es necesario porque Next.js usa Request/Response del estándar Web */
-    "lib": ["dom", "dom.iterable", "esnext"], 
+  
+    "module": "Node16",
+    
+    /* Esta opción requiere que 'module' sea también Node16 */
+    "moduleResolution": "node16",
+    
+    "lib": ["ES2022"],
 
     /* === Seguridad del compilador === */
     "strict": true,
@@ -27,8 +29,6 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
-    "isolatedModules": true, // Recomendado por Next.js
-    "jsx": "preserve",       // Necesario si usas JSX/React
 
     /* === Alias === */
     "paths": {
@@ -43,13 +43,7 @@
     "noUncheckedIndexedAccess": false,
     "incremental": true
   },
-  "include": [
-    "next-env.d.ts", 
-    "src/**/*.ts", 
-    "src/**/*.tsx", 
-    ".next/types/**/*.ts",
-    "middleware.ts" // Aseguramos que incluya el middleware si está en la raíz
-  ],
+  "include": ["src/**/*.ts"],
   "exclude": [
     "node_modules",
     "dist",

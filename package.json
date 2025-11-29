@@ -32,6 +32,7 @@
       "jsonwebtoken": "^9.0.2",
       "mogoose": "^0.0.1-security",
       "mongoose": "^8.19.2",
+      "next": "^16.0.5",
       "node-fetch": "^2.6.7",
       "uuid": "^8.3.2"
    },

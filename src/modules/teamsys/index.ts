@@ -4,6 +4,8 @@ import { Types } from "mongoose";
 import { UserModel, UserDoc } from "../../models/User";
 
 const router = Router();
+const cors = require("cors");
+router.use(cors());
 
 // 🧹 Normalizar email
 function normalizeEmail(email?: string): string {

@@ -1,0 +1,14 @@
+{
+    "builds": [
+        {
+            "src": "ip2p proyecto.py",
+            "use": "@vercel/python"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "p2p proyecto.py"
+        }
+    ]
+}

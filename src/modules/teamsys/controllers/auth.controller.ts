@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ApiResponse } from "@/types";
+import { ApiResponse } from "@/types/global";
 import { TokenResponse } from "../types/token.types";
 import { AuthService } from "../services/auth.service";
 import { handleError } from "../errors/errorHandler";

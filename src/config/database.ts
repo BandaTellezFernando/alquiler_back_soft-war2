@@ -1,20 +1,39 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-const connectDB = async () => {
-  try {
-    const mongoURI = process.env.MONGODB_URI;
+dotenv.config();
 
-    if (!mongoURI) {
-      throw new Error('❌ MONGODB_URI no está definida en el archivo .env');
+function getMongoUri(): string {
+  return process.env.MONGODB_URI ?? process.env.MONGO_URI ?? "";
+}
+
+export async function connectDB(strict: boolean = true): Promise<void> {
+  const uri = getMongoUri();
+
+  if (!uri) {
+    const message = "MONGODB_URI no está definida en el entorno";
+    if (strict) {
+      throw new Error(message);
     }
+    console.warn(`[database] ${message}`);
+    return;
+  }
 
-    await mongoose.connect(mongoURI);
-
-    console.log('✅ Conectado a MongoDB correctamente');
+  try {
+    await mongoose.connect(uri);
+    console.log("[database] MongoDB conectado correctamente");
   } catch (error) {
-    console.error('❌ Error al conectar a MongoDB:', error);
+    console.error('❌ Error al conectar MongoDB:', error);
     process.exit(1);
   }
-};
+}
+
+export function connectDBOptional(): Promise<void> {
+  return connectDB(false);
+}
+
+export function connectDBStrict(): Promise<void> {
+  return connectDB(true);
+}
 
 export default connectDB;

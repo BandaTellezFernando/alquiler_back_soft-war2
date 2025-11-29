@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import ubicacionService from '../services/ubicacion.service';
-import { ApiResponse } from '../types';
+import { ApiResponse } from '../modules/teamsys/types';
 import { handleError } from '../errors/errorHandler';
 import { IUbicacion } from '../models/ubicacion.model';
 

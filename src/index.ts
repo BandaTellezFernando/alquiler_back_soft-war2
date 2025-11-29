@@ -90,6 +90,7 @@ import ubicacionRoutes from "./routes/ubicacion.routes";
 // APP SETUP
 // ============================================
 const app = express();
+app.use(cors());
 
 // Confía en el proxy (útil para proxies / load balancers)
 app.set("trust proxy", 1);

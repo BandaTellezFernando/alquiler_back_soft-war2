@@ -1,10 +1,5 @@
-import fs from "fs";
-import path from "path";
-
-const logPath = path.join(process.cwd(), "logs", "send_log.txt");
-
 /**
- * Registra en un archivo cada intento de envío
+ * Registra en la consola (Logs de Vercel) cada intento de envío
  * @param to destinatario
  * @param status estado del envío ("OK", "FALLIDO", "ERROR")
  * @param transactionId id único de la transacción
@@ -17,12 +12,15 @@ export function logNotification(
   errorMsg: string = ""
 ) {
   const timestamp = new Date().toISOString();
-  const line = `${timestamp} | TxID: ${transactionId} | To: ${to} | Estado: ${status}${errorMsg ? " | Error: " + errorMsg : ""}\n`;
+  
+  // Construimos el mensaje
+  const logMessage = `[${timestamp}] | TxID: ${transactionId} | To: ${to} | Estado: ${status}${errorMsg ? " | Error: " + errorMsg : ""}`;
 
-  // Asegurar que el directorio exista
-  if (!fs.existsSync(path.dirname(logPath))) {
-    fs.mkdirSync(path.dirname(logPath), { recursive: true });
+  // En Vercel, usar console.error hace que el log salga en ROJO (útil para alertas)
+  // y console.log sale normal.
+  if (status === "ERROR" || status === "FALLIDO" || errorMsg) {
+    console.error(logMessage);
+  } else {
+    console.log(logMessage);
   }
-
-  fs.appendFileSync(logPath, line);
 }

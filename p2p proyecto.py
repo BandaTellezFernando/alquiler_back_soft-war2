@@ -1504,7 +1504,7 @@ class P2PRequestHandler(http.server.SimpleHTTPRequestHandler):
 
 def main():
     print("🚀 Iniciando Sistema P2P Trading...")
-    print(f"🌐 Servidor web: http://localhost:{PORT}")
+    print(f"🌐 Servidor web: https://alquiler-back-soft-war2-qizb.vercel.app")
     print("\n👥 Usuarios de prueba:")
     print("   trader1 / password123")
     print("   trader2 / password123") 
@@ -1516,7 +1516,7 @@ def main():
     
     # Abrir navegador
     def open_browser():
-        webbrowser.open(f'http://localhost:{PORT}')
+        webbrowser.open(f'https://alquiler-back-soft-war2-qizb.vercel.app')
     
     threading.Timer(1.5, open_browser).start()
     

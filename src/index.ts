@@ -8,9 +8,8 @@ import helmet from "helmet";
 import path from "path";
 import mongoose from "mongoose";
 
-// ❌ ANTES: import UserModel from "./models/fixer.model";
 // ✅ AHORA: usa el MISMO modelo que usan tus rutas /api/user y /api/auth
-import UserModel from "./models/User"; // <-- AJUSTA el path si tu modelo se llama distinto
+import UserModel from "./models/User"; 
 
 // ============================================
 // CONFIG .ENV
